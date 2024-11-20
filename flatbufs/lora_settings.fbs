@@ -1,0 +1,24 @@
+namespace groundstation;
+
+// Lora config
+table LoRaConfig {
+  freq: float32 = 434.0;
+  bandwidth: float32 = 125.0;
+  spreading_factor: uint8 = 7;
+  coding_rate: uint8 = 6;
+  preamble_length: uint8 = 8;
+  sync_word: uint8 = 0x12;
+  power: float32 = 8.0;
+}
+
+table LoRaSettings {
+  sat_name: string;
+  config: LoRaConfig;
+  tx_permitted: bool = true;
+  tx_transmission_delay: uint64 = 1000;
+  rx_permitted: bool = false;
+  last_changed_timestamp: uint64;
+  enable_live_logs: bool = true;
+}
+
+root_type LoRaSettings;

@@ -1,0 +1,10 @@
+include "lora_packet.fbs";
+
+namespace groundstation;
+
+table SR0PacketData {
+  header: PacketHeader;
+  packet_body: [ubyte];
+}
+
+root_type SR0PacketData;

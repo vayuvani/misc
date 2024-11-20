@@ -1,0 +1,20 @@
+namespace groundstation;
+
+table PacketHeader {
+  packet_id: uint8 (deprecated);
+  packet_timestamp: uint64;
+  packet_size: uint16;
+  packet_rx_rssi: int8;
+  packet_rx_snr: float;
+  packet_crc_flag: bool = false;
+  packet_seq_id: [ubyte];
+  packet_sat_name: string;
+  packet_sat_freq: float32;
+}
+
+table LoRaPacket {
+  packet_header: PacketHeader;
+  packet_body: [ubyte];
+}
+
+root_type LoRaPacket;

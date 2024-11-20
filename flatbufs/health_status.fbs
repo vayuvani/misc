@@ -1,0 +1,28 @@
+namespace groundstation;
+
+enum RadioState : byte {
+    IDLE = 0,
+    TRANSMITTING,
+    RECEIVING,
+    COOLDOWN
+ }
+
+
+// Ground station Health Data
+table GsHealthData {
+  battery_connected: bool = false;
+  battery_remaining: uint16 = 0; // battery remaining in mAH
+  battery_capacity: uint16 = 0; // battery capacity in mAH
+  battery_voltage: float32 = 0.0;
+  wifi_rssi: int8 = 0;
+  wifi_name: string;
+  lora_tx_enabled: bool = false;
+  lora_rx_enabled: bool = false;
+  lora_last_packet_size: uint8 = 0; // number of bytes that have been sent or received
+  lora_last_packet_tx_timestamp: uint64 = 0;
+  lora_last_packet_rx_timestamp: uint64 = 0;
+  lora_last_packet_rx_rssi: int8 = 0;
+  lora_last_packet_rx_snr: float = 0.0;
+  lora_status:RadioState = IDLE;
+}
+root_type GsHealthData;
